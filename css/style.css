@@ -1,0 +1,21 @@
+body{
+    margin:0;
+    background-color:#3498db;
+}
+body,a{
+    font-family: 'Lato', sans-serif;
+    color:white;
+}
+footer{
+    height:34px;
+    clear:both;
+}
+.peter-river{background-color:#3498db}
+.color-0 { background-color: #3499DB }	/* Main Primary color */
+.color-1 { background-color: #85C4ED }
+.color-2 { background-color: #58ADE3 }
+.color-3 { background-color: #0F85D1 }
+.color-4 { background-color: #0665A2 }
+.wet-asphalt{background-color:#34495e}
+.white{color:white;}
+.right-link{position:absolute;right:0;cursor:pointer;margin-top:5%;opacity:0.8;z-index:9999;}

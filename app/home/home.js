@@ -25,7 +25,7 @@ home.loadSections = function() {
         routing.routesArray[i].callBack.call();
         services.getPage(pageRoute.partial,routing.routesArray[i].path,services.routing.writeHTML);
         if(routing.routesArray[i].path!='home'){
-            services.getPage(pageRoute.script,'head',services.routing.writeScript,routing.routesArray[i].path);
+            services.getPage(pageRoute.script,'head',services.routing.writeScript,'home');
             }
     }
 };

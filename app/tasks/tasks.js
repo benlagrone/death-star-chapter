@@ -1,7 +1,7 @@
 var tasks = {};
+console.log(id)
 tasks.request = function() {
     var url = 'app/tasks/data.json';
-
     services.getPage(url,'tasks',tasks.parseAjax,id);
 };
 

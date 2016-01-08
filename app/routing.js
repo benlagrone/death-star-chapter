@@ -8,7 +8,23 @@ services.routing.register('home',function(){
         partial:"./app/home/home-home.html",
         script:"./app/home/home.js"
     };
-    console.log('home')
+    //console.log('home')
+});
+services.routing.register('level1',function(){
+    pageRoute = {
+        page:"./app/level1/level1.html",
+        partial:"./app/level1/home-level1.html",
+        script:"./app/level1/level1.js"
+    };
+    //console.log('level1')
+});
+services.routing.register('leaderboard',function(){
+    pageRoute = {
+        page:"./app/leaderboard/leaderboard.html",
+        partial:"./app/leaderboard/home-leaderboard.html",
+        script:"./app/leaderboard/leaderboard.js"
+    };
+    //console.log('level1')
 });
 services.routing.register('weather',function(){
     pageRoute = {
@@ -16,7 +32,7 @@ services.routing.register('weather',function(){
         partial:"./app/weather/home-weather.html",
         script:"./app/weather/weather.js"
     };
-    console.log('weather')
+    //console.log('weather')
 });
 services.routing.register('travel',function(){
     pageRoute = {
@@ -24,7 +40,7 @@ services.routing.register('travel',function(){
         partial:"./app/travel/home-travel.html",
         script:"./app/travel/travel.js"
     };
-    console.log('travel')
+    //console.log('travel')
 });
 services.routing.register('news',function(){
     pageRoute = {
@@ -32,7 +48,7 @@ services.routing.register('news',function(){
         partial:"./app/news/home-news.html",
         script:"./app/news/news.js"
     };
-    console.log('news')
+    //console.log('news')
 });
 services.routing.register('stocks',function(){
     pageRoute = {
@@ -40,7 +56,7 @@ services.routing.register('stocks',function(){
         partial:"./app/stocks/home-stocks.html",
         script:"./app/stocks/stocks.js"
     };
-    console.log('stocks')
+    //console.log('stocks')
 });
 services.routing.register('tasks',function(){
     pageRoute = {
@@ -48,7 +64,7 @@ services.routing.register('tasks',function(){
         partial:"./app/tasks/home-tasks.html",
         script:"./app/tasks/tasks.js"
     };
-    console.log('tasks')
+    //console.log('tasks')
 });
 
 

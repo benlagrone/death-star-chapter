@@ -1,7 +1,7 @@
 
 
 function doSomethingWithHash(hash) {
-    console.log(hash)
+    //console.log(hash)
 }
 
 
