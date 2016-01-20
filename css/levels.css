@@ -63,4 +63,16 @@
     -20px -40px 40px #cd4606,
     0 -50px 65px #973716,
     10px -70px 70px #451b0e;
+    -ms-transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+}
+#rocket .fa-comment{
+    position: absolute;
+    bottom: 10px;
+    left: 100px;
+    -ms-transform: rotate(-315deg);
+    -webkit-transform: rotate(-315deg);
+    transform: rotate(-315deg);
+    font-size:20vw;
 }

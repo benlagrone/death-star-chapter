@@ -4,20 +4,15 @@ level1.load = function(){
     for (i = 0;i<document.getElementsByClassName("row").length;i++){
         document.getElementsByClassName("row")[i].style.height = window.innerHeight + "px";
     }
-    services.levels.spreadObjects(document.getElementById("ground").getElementsByClassName("fa-tree"),0,14,-(window.innerHeight/28),1,"relative","px");
-    services.levels.spreadObjects(document.getElementById("ground").getElementsByClassName("right")[0].getElementsByClassName("small"),0,14,-(window.innerHeight/13),1,"relative","px");
-    services.levels.spreadObjects(document.getElementById("ground").getElementsByClassName("right")[0].getElementsByClassName("large"),0,14,-(window.innerHeight/15),1,"relative","px");
-
     smoothScrollTo(document.body.scrollHeight);
     document.getElementsByTagName("body")[0].setAttribute("onscroll","level1.updateElement()")
 };
 
-
-
 level1.updateElement = function() {
+    console.log(document.getElementById("rocket").getElementsByTagName('span')[0].getBoundingClientRect())
     level1.getMovingElements(function (theObject,increment){
         theObject.style.position = "relative";
-        theObject.style.left = services.levels.click.setElementLeftPosition(theObject,increment);
+        theObject.style.left = levels.click.setElementLeftPosition(theObject,increment);
     });
     level1.moveEarth(document.getElementById("earth"));
     level1.moveRocket(document.getElementById("rocket"));
@@ -27,8 +22,9 @@ level1.updateElement = function() {
 };
 
 level1.moveRocket = function(rocket){
-    rocket.getElementsByTagName("span")[0].style.transform = "rotate(" + (355 - (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*3) + "deg)";
-    rocket.getElementsByTagName("i")[2].style.transform = "rotate(" + (259 - (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*3) + "deg)";
+    //rocket.getElementsByTagName("span")[0].style.transform = "rotate(" + (355 - (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*3) + "deg)";
+    //rocket.getElementsByTagName("i")[2].style.transform = "rotate(" + (259 - (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*3) + "deg)";
+    //rocket.getElementsByTagName("span")[3].style.transform = "rotate(" + (355 + (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*3) + "deg)";
     rocket.getElementsByTagName("span")[0].style.bottom = 65 * (document.getElementById("rocket").getBoundingClientRect().bottom)/(window.innerHeight*(document.getElementsByClassName("row").length)) + '%';
 };
 
@@ -46,19 +42,19 @@ level1.cloudCall = function(clouds){
     for (var k=0;k<clouds.classList.length;k++){
         switch (clouds.classList[k]){
             case 'fa-2x':
-                clouds.style.left = services.levels.click.setElementLeftPosition(clouds,1);
+                clouds.style.left = levels.click.setElementLeftPosition(clouds,1);
                 break;
             case 'fa-3x':
-                clouds.style.left = services.levels.click.setElementLeftPosition(clouds,2);
+                clouds.style.left = levels.click.setElementLeftPosition(clouds,2);
                 break;
             case 'fa-4x':
-                clouds.style.left = services.levels.click.setElementLeftPosition(clouds,3);
+                clouds.style.left = levels.click.setElementLeftPosition(clouds,3);
                 break;
             case 'fa-5x':
-                clouds.style.left = services.levels.click.setElementLeftPosition(clouds,4);
+                clouds.style.left = levels.click.setElementLeftPosition(clouds,4);
                 break;
             default:
-                clouds.style.left = services.levels.click.setElementLeftPosition(clouds,.5);
+                clouds.style.left = levels.click.setElementLeftPosition(clouds,.5);
                 ;
         }
     }
@@ -101,59 +97,68 @@ level1.request = function() {
 
 level1.parseAjax = function (xhr,id){
     var data = JSON.parse(xhr.responseText);
-    var level1StarsHtml = '';
+    //console.log(data.objectgroups)
+
+    var level1MoonHTML = '<i class="'+data.objectgroups.moon.objects[0].idclass+' '+data.objectgroups.moon.objects[0].sizeclass+' '+data.objectgroups.moon.objects[0].colorclass+'"></i>';
+    document.getElementById('p0').innerHTML=level1MoonHTML;
+
+    var level1StarsHtml = '<div id="stars">';
     for(i=0;i<data.objectgroups.stars.objects.length;i++){
         level1StarsHtml+='<i class="'+data.objectgroups.stars.objects[i].idclass+' '+data.objectgroups.stars.objects[i].colorclass+'"></i>';
     }
-    document.getElementById('stars').innerHTML=level1StarsHtml;
-    services.levels.spreadObjects(document.getElementById("stars").getElementsByTagName("i"),150,100,1,1,"fixed","%");
+    level1StarsHtml += '</div>';
+    document.getElementById('p1').innerHTML=level1StarsHtml;
+    levels.spreadObjects(document.getElementById("stars").getElementsByTagName("i"),150,100,1,1,"fixed","%");
 
-    var level1Cloudsp9Html = '<div class="clouds">';
-    for(j=0;j<data.objectgroups.clouds.cloudgroups.p9.objects.length;j++){
-        level1Cloudsp9Html+='<i class="'+data.objectgroups.clouds.cloudgroups.p9.objects[j].idclass+' '+data.objectgroups.clouds.cloudgroups.p9.objects[j].sizeclass+' '+data.objectgroups.clouds.cloudgroups.p9.objects[j].colorclass+'"></i>';
+    for (var key in data.objectgroups.clouds){
+        var HTMLStart = '<div class="clouds">';
+        for(var key0 in data.objectgroups.clouds[key].objects){
+            HTMLStart+='<i class="'+data.objectgroups.clouds[key].objects[key0].idclass+' '+data.objectgroups.clouds[key].objects[key0].sizeclass+' '+data.objectgroups.clouds[key].objects[key0].colorclass+'"></i>';
+        }
+        HTMLStart+= '</div>';
+        document.getElementById(key).innerHTML=HTMLStart;
     }
-    level1Cloudsp9Html += '</div>';
-    document.getElementById('p9').innerHTML=level1Cloudsp9Html;
-
-    var level1Cloudsp10Html = '<div class="clouds">';
-    for(j=0;j<data.objectgroups.clouds.cloudgroups.p10.objects.length;j++){
-        level1Cloudsp10Html+='<i class="'+data.objectgroups.clouds.cloudgroups.p10.objects[j].idclass+' '+data.objectgroups.clouds.cloudgroups.p11.objects[j].sizeclass+' '+data.objectgroups.clouds.cloudgroups.p10.objects[j].colorclass+'"></i>';
-    }
-    level1Cloudsp10Html += '</div>';
-    document.getElementById('p10').innerHTML=level1Cloudsp10Html;
-
-    var level1Cloudsp11Html = '<div class="clouds">';
-    for(j=0;j<data.objectgroups.clouds.cloudgroups.p11.objects.length;j++){
-        level1Cloudsp11Html+='<i class="'+data.objectgroups.clouds.cloudgroups.p11.objects[j].idclass+' '+data.objectgroups.clouds.cloudgroups.p11.objects[j].sizeclass+' '+data.objectgroups.clouds.cloudgroups.p11.objects[j].colorclass+'"></i>';
-    }
-    level1Cloudsp11Html += '</div>';
-    document.getElementById('p11').innerHTML=level1Cloudsp9Html;
-
-    var level1Cloudsp12Html = '<div class="clouds">';
-    for(j=0;j<data.objectgroups.clouds.cloudgroups.p12.objects.length;j++){
-        level1Cloudsp12Html+='<i class="'+data.objectgroups.clouds.cloudgroups.p12.objects[j].idclass+' '+data.objectgroups.clouds.cloudgroups.p12.objects[j].sizeclass+' '+data.objectgroups.clouds.cloudgroups.p12.objects[j].colorclass+'"></i>';
-    }
-    level1Cloudsp12Html += '</div>';
-    document.getElementById('p12').innerHTML=level1Cloudsp9Html;
-
-    var level1Cloudsp13Html = '<div class="clouds">';
-    for(j=0;j<data.objectgroups.clouds.cloudgroups.p13.objects.length;j++){
-        level1Cloudsp13Html+='<i class="'+data.objectgroups.clouds.cloudgroups.p13.objects[j].idclass+' '+data.objectgroups.clouds.cloudgroups.p13.objects[j].sizeclass+' '+data.objectgroups.clouds.cloudgroups.p13.objects[j].colorclass+'"></i>';
-    }
-    level1Cloudsp13Html += '</div>';
-    document.getElementById('p13').innerHTML=level1Cloudsp13Html;
-
     for (var i = 0; i < document.getElementsByClassName("clouds").length; i++){
-        services.levels.spreadObjects(document.getElementsByClassName("clouds")[i].getElementsByTagName("i"),window.innerHeight*.75,window.innerWidth*.75,1,1-(window.innerWidth/2),"relative","px");
+        levels.spreadObjects(document.getElementsByClassName("clouds")[i].getElementsByTagName("i"),window.innerHeight*.75,window.innerWidth*.75,1,1-(window.innerWidth/2),"relative","px");
     }
+
+    var objectsHTMLStart = '';
+    for (var key in data.objectgroups.objects){
+        objectsHTMLStart+='<div id="'+key+'">';
+        if(key==='rocket')
+            objectsHTMLStart+='<span>';
+        for(var key0 in data.objectgroups.objects[key].objects){
+            objectsHTMLStart+='<i class="'+data.objectgroups.objects[key].objects[key0].idclass+' '+data.objectgroups.objects[key].objects[key0].sizeclass+' '+data.objectgroups.objects[key].objects[key0].colorclass+'"></i>';
+        }
+        if(key==='rocket')
+            objectsHTMLStart+='</span>';
+        objectsHTMLStart+='</div>';
+    }
+    document.getElementById('objects').innerHTML=objectsHTMLStart;
+
+    var terraHTMLStart = '<div id="ground">';
+    for (var key in data.objectgroups.terra){
+        terraHTMLStart+='<div class="'+key+'">';
+        for(var key0 in data.objectgroups.terra[key].objects){
+            terraHTMLStart+='<i class="'+data.objectgroups.terra[key].objects[key0].idclass+' '+data.objectgroups.terra[key].objects[key0].sizeclass+' '+data.objectgroups.terra[key].objects[key0].colorclass+'"></i>';
+        }
+        terraHTMLStart+='</div>';
+    }
+    terraHTMLStart+='</div>';
+    document.getElementById('terra').innerHTML=terraHTMLStart;
+
+    levels.spreadObjects(document.getElementById("ground").getElementsByClassName("fa-tree"),0,14,-(window.innerHeight/28),1,"relative","px");
+    levels.spreadObjects(document.getElementById("ground").getElementsByClassName("right")[0].getElementsByClassName("small"),0,14,-(window.innerHeight/13),1,"relative","px");
+    levels.spreadObjects(document.getElementById("ground").getElementsByClassName("right")[0].getElementsByClassName("large"),0,14,-(window.innerHeight/15),1,"relative","px");
+
 };
 
 level1.click={};
-level1.click.left = services.levels.click.left;
-level1.click.right = services.levels.click.right;
+level1.click.left = levels.click.left;
+level1.click.right = levels.click.right;
 
 if(id=='home'){
-console.log('home home')
+//console.log('home home')
 }else{
     level1.request();
     level1.load();

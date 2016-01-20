@@ -46,86 +46,7 @@ services.routing.writeJSON = function(xhr){
     var data = JSON.parse(xhr.responseText);
 };
 
-services.levels = {};
-services.levels.spreadObjects = function(x,vm,hm,va,ha,p,e){
-    for (var i=0;i<x.length;i++){
-        x[i].style.position = p;
-        x[i].style.top = Math.floor((Math.random()*vm)+va)+e;
-        x[i].style.left = Math.floor((Math.random()*hm)+ha)+e;
-    }
-};
 
-services.levels.click = {};
-
-services.levels.click.controlsAdjust = function(click){
-
-var sprite = document.getElementById("rocket").getElementsByTagName("span")[0];
-    switch (click){
-        case 'rightClick':
-            //move right
-            sprite.style.left = services.levels.click.setElementLeftPosition(sprite,2);
-
-            break;
-        case 'leftClick':
-            //move left
-            sprite.style.left = services.levels.click.setElementLeftPosition(sprite,-2)
-            break;
-    }
-    document.getElementById(click).classList.add('small');
-    setTimeout(function(){
-        document.getElementById(click).classList.remove('small')
-    }, 200);
-};
-
-services.levels.click.checkKey = function(e){
-    e = e || window.event;
-    console.log(e)
-    if (e.keyCode == '37') {
-        services.levels.click.controlsAdjust('leftClick')
-    }
-    else if (e.keyCode == '39') {
-        services.levels.click.controlsAdjust('rightClick')
-    }
-};
-var myVar;
-services.levels.click.intervalMove = function(action,direction) {
-
-    switch (action){
-        case 'go':
-            myTimer();
-            break;
-        case 'stop':
-            myStopFunction();
-            break;
-    }
-    function myStopFunction() {
-        clearInterval(myVar);
-        return false;
-    }
-    function myTimer() {
-        myVar = setInterval(function(){
-            services.levels.click.controlsAdjust(direction)
-        }, 50);
-        return false;
-    }
-
-};
-
-
-
-
-
-function myStopFunction(myVar) {
-    clearInterval(myVar);
-}
-
-services.levels.click.setElementLeftPosition = function(element,increment){
-    if(isNaN(parseInt(element.style.left.split("p")[0]))){
-        return ((element.getBoundingClientRect().left)+increment)+"px"
-    } else {
-        return ((Math.abs(parseInt(element.style.left.split("p")[0]))) + increment)+"px";
-    }
-};
 
 
 
@@ -160,4 +81,3 @@ window.smoothScrollTo = (function () {
     };
 }());
 
-document.onkeydown = services.levels.click.checkKey;
