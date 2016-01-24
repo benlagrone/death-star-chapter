@@ -74,5 +74,16 @@
     -ms-transform: rotate(-315deg);
     -webkit-transform: rotate(-315deg);
     transform: rotate(-315deg);
-    font-size:20vw;
+    font-size:100px;
+    display:none;
+}
+#rocket .fa-comment>span{
+    color: #333;
+    font-size: 1.4vw;
+    line-height: 2vw;
+    position: absolute;
+    left: 18px;
+    top: 28px;
+    font-weight: bold;
+
 }

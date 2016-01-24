@@ -21,6 +21,10 @@ home.correctDigit = function(i){
 
 
 home.loadSections = function() {
+    setTimeout(function(){
+        console.log('load home')
+        document.getElementById('curtain').className = 'fade';
+    }, 1000);
     for (i = 0; i < routing.routesArray.length; i++) {
         routing.routesArray[i].callBack.call();
         services.getPage(pageRoute.partial,routing.routesArray[i].path,services.routing.writeHTML);

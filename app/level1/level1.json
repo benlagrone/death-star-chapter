@@ -1,5 +1,12 @@
 {
   "objectgroups": {
+    "messages":{
+      "objects":[
+        {"text":"3,2,1...   SCROLL!","position":100,"time":3000},
+        {"text":"Keep Scrolling...","position":50,"time":3000},
+        {"text":"finished!! Awesome!","position":5,"time":6000}
+      ]
+    },
     "stars": {
       "objects": [
         {"type":"star","idclass":"fa fa-star","sizeclass":"fa-1x","colorclass":"yellow"},

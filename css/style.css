@@ -19,3 +19,29 @@ footer{
 .wet-asphalt{background-color:#34495e}
 .white{color:white;}
 .right-link{position:absolute;right:0;cursor:pointer;margin-top:5%;opacity:0.8;z-index:9999;}
+
+#curtain{
+    position:fixed;
+    left:0;
+    top:0;
+    background:#000;
+    width:100%;
+    height:100%;
+    opacity:1;
+    /*-webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    transition: opacity 1s;*/
+}
+
+#curtain.fade {
+    opacity:0;
+    width:0%;
+    height:1%;
+}
+#back{
+    position:fixed;
+    top:5%;
+    left:5%;
+}
+
+

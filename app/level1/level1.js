@@ -1,5 +1,8 @@
 var level1 = {};
 console.log(id);
+
+
+level1.data;
 level1.load = function(){
     for (i = 0;i<document.getElementsByClassName("row").length;i++){
         document.getElementsByClassName("row")[i].style.height = window.innerHeight + "px";
@@ -9,7 +12,29 @@ level1.load = function(){
 };
 
 level1.updateElement = function() {
-    console.log(document.getElementById("rocket").getElementsByTagName('span')[0].getBoundingClientRect())
+    if(Math.round(100*window.pageYOffset/(document.body.scrollHeight-document.documentElement.clientHeight))===0)
+        window.location.hash = '#home';
+    var ScrollPosition = Math.round(100*window.pageYOffset/(document.body.scrollHeight-document.documentElement.clientHeight));
+console.log(ScrollPosition)
+    for(i=0;i<level1.data.objectgroups.messages.objects.length;i++){
+            var messageObject = level1.data.objectgroups.messages.objects[i];
+
+            if(messageObject.position===ScrollPosition){
+                console.log('###match')
+                levels.showMessage.show(level1.data.objectgroups.messages.objects[i])
+            }
+
+            if(messageObject.position>=ScrollPosition-1){
+                if(messageObject.position<=ScrollPosition+1){
+                    console.log('match')
+                }
+            }
+    }
+
+
+    if(document.body.scrollHeight-window.pageYOffset===document.documentElement.clientHeight)
+        document.getElementById('curtain').className = 'fade';
+
     level1.getMovingElements(function (theObject,increment){
         theObject.style.position = "relative";
         theObject.style.left = levels.click.setElementLeftPosition(theObject,increment);
@@ -96,24 +121,24 @@ level1.request = function() {
 
 
 level1.parseAjax = function (xhr,id){
-    var data = JSON.parse(xhr.responseText);
+    level1.data = JSON.parse(xhr.responseText);
     //console.log(data.objectgroups)
 
-    var level1MoonHTML = '<i class="'+data.objectgroups.moon.objects[0].idclass+' '+data.objectgroups.moon.objects[0].sizeclass+' '+data.objectgroups.moon.objects[0].colorclass+'"></i>';
+    var level1MoonHTML = '<i class="'+level1.data.objectgroups.moon.objects[0].idclass+' '+level1.data.objectgroups.moon.objects[0].sizeclass+' '+level1.data.objectgroups.moon.objects[0].colorclass+'"></i>';
     document.getElementById('p0').innerHTML=level1MoonHTML;
 
     var level1StarsHtml = '<div id="stars">';
-    for(i=0;i<data.objectgroups.stars.objects.length;i++){
-        level1StarsHtml+='<i class="'+data.objectgroups.stars.objects[i].idclass+' '+data.objectgroups.stars.objects[i].colorclass+'"></i>';
+    for(i=0;i<level1.data.objectgroups.stars.objects.length;i++){
+        level1StarsHtml+='<i class="'+level1.data.objectgroups.stars.objects[i].idclass+' '+level1.data.objectgroups.stars.objects[i].colorclass+'"></i>';
     }
     level1StarsHtml += '</div>';
     document.getElementById('p1').innerHTML=level1StarsHtml;
     levels.spreadObjects(document.getElementById("stars").getElementsByTagName("i"),150,100,1,1,"fixed","%");
 
-    for (var key in data.objectgroups.clouds){
+    for (var key in level1.data.objectgroups.clouds){
         var HTMLStart = '<div class="clouds">';
-        for(var key0 in data.objectgroups.clouds[key].objects){
-            HTMLStart+='<i class="'+data.objectgroups.clouds[key].objects[key0].idclass+' '+data.objectgroups.clouds[key].objects[key0].sizeclass+' '+data.objectgroups.clouds[key].objects[key0].colorclass+'"></i>';
+        for(var key0 in level1.data.objectgroups.clouds[key].objects){
+            HTMLStart+='<i class="'+level1.data.objectgroups.clouds[key].objects[key0].idclass+' '+level1.data.objectgroups.clouds[key].objects[key0].sizeclass+' '+level1.data.objectgroups.clouds[key].objects[key0].colorclass+'"></i>';
         }
         HTMLStart+= '</div>';
         document.getElementById(key).innerHTML=HTMLStart;
@@ -123,12 +148,12 @@ level1.parseAjax = function (xhr,id){
     }
 
     var objectsHTMLStart = '';
-    for (var key in data.objectgroups.objects){
+    for (var key in level1.data.objectgroups.objects){
         objectsHTMLStart+='<div id="'+key+'">';
         if(key==='rocket')
             objectsHTMLStart+='<span>';
-        for(var key0 in data.objectgroups.objects[key].objects){
-            objectsHTMLStart+='<i class="'+data.objectgroups.objects[key].objects[key0].idclass+' '+data.objectgroups.objects[key].objects[key0].sizeclass+' '+data.objectgroups.objects[key].objects[key0].colorclass+'"></i>';
+        for(var key0 in level1.data.objectgroups.objects[key].objects){
+            objectsHTMLStart+='<i class="'+level1.data.objectgroups.objects[key].objects[key0].idclass+' '+level1.data.objectgroups.objects[key].objects[key0].sizeclass+' '+level1.data.objectgroups.objects[key].objects[key0].colorclass+'"></i>';
         }
         if(key==='rocket')
             objectsHTMLStart+='</span>';
@@ -137,10 +162,10 @@ level1.parseAjax = function (xhr,id){
     document.getElementById('objects').innerHTML=objectsHTMLStart;
 
     var terraHTMLStart = '<div id="ground">';
-    for (var key in data.objectgroups.terra){
+    for (var key in level1.data.objectgroups.terra){
         terraHTMLStart+='<div class="'+key+'">';
-        for(var key0 in data.objectgroups.terra[key].objects){
-            terraHTMLStart+='<i class="'+data.objectgroups.terra[key].objects[key0].idclass+' '+data.objectgroups.terra[key].objects[key0].sizeclass+' '+data.objectgroups.terra[key].objects[key0].colorclass+'"></i>';
+        for(var key0 in level1.data.objectgroups.terra[key].objects){
+            terraHTMLStart+='<i class="'+level1.data.objectgroups.terra[key].objects[key0].idclass+' '+level1.data.objectgroups.terra[key].objects[key0].sizeclass+' '+level1.data.objectgroups.terra[key].objects[key0].colorclass+'"></i>';
         }
         terraHTMLStart+='</div>';
     }
@@ -156,6 +181,7 @@ level1.parseAjax = function (xhr,id){
 level1.click={};
 level1.click.left = levels.click.left;
 level1.click.right = levels.click.right;
+
 
 if(id=='home'){
 //console.log('home home')

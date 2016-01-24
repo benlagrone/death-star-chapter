@@ -7,6 +7,7 @@ levels.spreadObjects = function(x,vm,hm,va,ha,p,e){
     }
 };
 
+
 levels.click = {};
 
 levels.click.controlsAdjust = function(click){
@@ -76,5 +77,13 @@ levels.click.setElementBottomPosition = function(element,increment){
         return ((Math.abs(parseInt(element.style.bottom.split("p")[0]))) + increment)+"px";
     }
 };
-
+levels.showMessage = {};
+levels.showMessage.show = function(messageObject){
+    console.log(messageObject)
+    document.getElementById('rocket').getElementsByClassName('fa-comment')[0].style.display = "inline";
+    document.getElementById('rocket').getElementsByClassName('fa-comment')[0].innerHTML='<span>'+messageObject.text+'</span>';
+    setTimeout(function(){
+        document.getElementById('rocket').getElementsByClassName('fa-comment')[0].style.display = "none";
+    }, messageObject.time);
+}
 document.onkeydown = levels.click.checkKey;

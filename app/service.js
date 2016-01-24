@@ -12,6 +12,10 @@ services.getPage = function(url,id,callBack,hash){
 };
 
 services.routing = {};
+services.routing.transition = function(){
+    document.getElementById('curtain').className = '';
+
+};
 services.routing.register = function(path, callBack){
     var routeObject = {};
     routeObject.path = path;
@@ -19,6 +23,7 @@ services.routing.register = function(path, callBack){
     routing.routesArray.push(routeObject);
 };
 services.routing.getLocationHash = function(){
+    services.routing.transition();
     if(!window.location.hash)
         window.location.hash = '#home';
     services.routing.useArray(window.location.hash.split('#')[1])
