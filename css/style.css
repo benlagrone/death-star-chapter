@@ -18,7 +18,6 @@ footer{
 .color-4 { background-color: #0665A2 }
 .wet-asphalt{background-color:#34495e}
 .white{color:white;}
-.right-link{position:absolute;right:0;cursor:pointer;margin-top:5%;opacity:0.8;z-index:9999;}
 
 #curtain{
     position:fixed;
@@ -28,6 +27,7 @@ footer{
     width:100%;
     height:100%;
     opacity:1;
+    z-index:999;
     /*-webkit-transition: opacity 1s;
     -moz-transition: opacity 1s;
     transition: opacity 1s;*/
@@ -42,6 +42,7 @@ footer{
     position:fixed;
     top:5%;
     left:5%;
+    z-index: 500;
 }
 
 

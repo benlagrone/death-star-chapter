@@ -18,55 +18,31 @@ services.routing.register('level1',function(){
     };
     //console.log('level1')
 });
+services.routing.register('level2',function(){
+    pageRoute = {
+        page:"./app/level2/level2.html",
+        partial:"./app/level2/home-level2.html",
+        script:"./app/level2/level2.js"
+    };
+    //console.log('level1')
+});
 services.routing.register('leaderboard',function(){
     pageRoute = {
         page:"./app/leaderboard/leaderboard.html",
         partial:"./app/leaderboard/home-leaderboard.html",
         script:"./app/leaderboard/leaderboard.js"
     };
-    //console.log('level1')
-});
-services.routing.register('weather',function(){
-    pageRoute = {
-        page:"./app/weather/weather.html",
-        partial:"./app/weather/home-weather.html",
-        script:"./app/weather/weather.js"
-    };
-    //console.log('weather')
-});
-services.routing.register('travel',function(){
-    pageRoute = {
-        page:"./app/travel/travel.html",
-        partial:"./app/travel/home-travel.html",
-        script:"./app/travel/travel.js"
-    };
-    //console.log('travel')
-});
-services.routing.register('news',function(){
-    pageRoute = {
-        page:"./app/news/news.html",
-        partial:"./app/news/home-news.html",
-        script:"./app/news/news.js"
-    };
-    //console.log('news')
-});
-services.routing.register('stocks',function(){
-    pageRoute = {
-        page:"./app/stocks/stocks.html",
-        partial:"./app/stocks/home-stocks.html",
-        script:"./app/stocks/stocks.js"
-    };
-    //console.log('stocks')
-});
-services.routing.register('tasks',function(){
-    pageRoute = {
-        page:"./app/tasks/tasks.html",
-        partial:"./app/tasks/home-tasks.html",
-        script:"./app/tasks/tasks.js"
-    };
-    //console.log('tasks')
+    //console.log('leaderboard')
 });
 
+services.routing.register('credits',function(){
+    pageRoute = {
+        page:"./app/credits/credits.html",
+        partial:"./app/credits/home-credits.html",
+        script:"./app/credits/credits.js"
+    };
+    //console.log('level1')
+});
 
 
 

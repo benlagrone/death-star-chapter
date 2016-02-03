@@ -1,36 +1,20 @@
 var level1 = {};
-console.log(id);
-
+//console.log(id);
 
 level1.data;
-level1.load = function(){
-    for (i = 0;i<document.getElementsByClassName("row").length;i++){
-        document.getElementsByClassName("row")[i].style.height = window.innerHeight + "px";
-    }
-    smoothScrollTo(document.body.scrollHeight);
-    document.getElementsByTagName("body")[0].setAttribute("onscroll","level1.updateElement()")
-};
 
 level1.updateElement = function() {
-    if(Math.round(100*window.pageYOffset/(document.body.scrollHeight-document.documentElement.clientHeight))===0)
+    if(Math.round(100*window.pageYOffset/(document.body.scrollHeight-document.documentElement.clientHeight))===0){
         window.location.hash = '#home';
+        return;
+    }
     var ScrollPosition = Math.round(100*window.pageYOffset/(document.body.scrollHeight-document.documentElement.clientHeight));
-console.log(ScrollPosition)
     for(i=0;i<level1.data.objectgroups.messages.objects.length;i++){
             var messageObject = level1.data.objectgroups.messages.objects[i];
-
             if(messageObject.position===ScrollPosition){
-                console.log('###match')
                 levels.showMessage.show(level1.data.objectgroups.messages.objects[i])
             }
-
-            if(messageObject.position>=ScrollPosition-1){
-                if(messageObject.position<=ScrollPosition+1){
-                    console.log('match')
-                }
-            }
     }
-
 
     if(document.body.scrollHeight-window.pageYOffset===document.documentElement.clientHeight)
         document.getElementById('curtain').className = 'fade';
@@ -40,18 +24,13 @@ console.log(ScrollPosition)
         theObject.style.left = levels.click.setElementLeftPosition(theObject,increment);
     });
     level1.moveEarth(document.getElementById("earth"));
-    level1.moveRocket(document.getElementById("rocket"));
+    levels.moveRocket(document.getElementById("rocket"));
     for (var i =0; i < document.getElementById("stars").getElementsByTagName("i").length; i++){
         document.getElementById("stars").getElementsByTagName("i")[i].style.opacity = (1-(window.pageYOffset/(window.innerHeight*(document.getElementsByClassName("row").length))) -.3);
     }
 };
 
-level1.moveRocket = function(rocket){
-    //rocket.getElementsByTagName("span")[0].style.transform = "rotate(" + (355 - (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*3) + "deg)";
-    //rocket.getElementsByTagName("i")[2].style.transform = "rotate(" + (259 - (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*3) + "deg)";
-    //rocket.getElementsByTagName("span")[3].style.transform = "rotate(" + (355 + (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*3) + "deg)";
-    rocket.getElementsByTagName("span")[0].style.bottom = 65 * (document.getElementById("rocket").getBoundingClientRect().bottom)/(window.innerHeight*(document.getElementsByClassName("row").length)) + '%';
-};
+
 
 level1.moveEarth = function(earth){
     earth.style.fontSize=(((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight) *100)+"vw";
@@ -84,8 +63,6 @@ level1.cloudCall = function(clouds){
         }
     }
 };
-
-
 
 level1.getMovingElements = function(callback){
     for(var i = 0;i<document.getElementsByClassName("row").length;i++){
@@ -183,9 +160,10 @@ level1.click.left = levels.click.left;
 level1.click.right = levels.click.right;
 
 
-if(id=='home'){
-//console.log('home home')
+if(id==='home'){
+
 }else{
+
     level1.request();
-    level1.load();
+    levels.load('level1.updateElement()');
 }

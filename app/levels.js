@@ -77,6 +77,12 @@ levels.click.setElementBottomPosition = function(element,increment){
         return ((Math.abs(parseInt(element.style.bottom.split("p")[0]))) + increment)+"px";
     }
 };
+
+levels.moveRocket = function(rocket){
+    console.log(rocket)
+    rocket.getElementsByTagName("span")[0].style.bottom = 65 * (document.getElementById("rocket").getBoundingClientRect().bottom)/(window.innerHeight*(document.getElementsByClassName("row").length)) + '%';
+};
+
 levels.showMessage = {};
 levels.showMessage.show = function(messageObject){
     console.log(messageObject)
@@ -85,5 +91,16 @@ levels.showMessage.show = function(messageObject){
     setTimeout(function(){
         document.getElementById('rocket').getElementsByClassName('fa-comment')[0].style.display = "none";
     }, messageObject.time);
-}
+};
+
+levels.load = function(levelCallback){
+    //console.log(levelCallback)
+    for (i = 0;i<document.getElementsByClassName("row").length;i++){
+        document.getElementsByClassName("row")[i].style.height = window.innerHeight + "px";
+    }
+    smoothScrollTo(document.body.scrollHeight);
+    document.getElementsByTagName("body")[0].setAttribute("onscroll",levelCallback);
+    document.getElementById('curtain').className = 'fade';
+};
+
 document.onkeydown = levels.click.checkKey;

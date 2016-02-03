@@ -1,0 +1,32 @@
+{
+  "objectgroups": {
+    "credits": {
+      "objects": [
+        {
+          "person": "Ben LaGrone",
+          "credit": "Author"
+        },
+        {
+          "person": "Anel Kabdullina",
+          "credit": "Wife"
+        },
+        {
+          "person": "Sumeet",
+          "credit": "Editor"
+        },
+        {
+          "person": "Ben LaGrone",
+          "credit": "Author"
+        },
+        {
+          "person": "Anel Kabdullina",
+          "credit": "Wife"
+        },
+        {
+          "person": "Sumeet",
+          "credit": "Editor"
+        }
+      ]
+    }
+  }
+}

@@ -3,7 +3,7 @@
     bottom:60px;
     left:70%;
     width:30%;
-    z-index:999;
+    z-index:100;
 }
 #controls i{
     opacity:.75;
@@ -86,4 +86,13 @@
     top: 28px;
     font-weight: bold;
 
+}
+
+.falcon {
+    -ms-transform: rotate(50deg);
+    -webkit-transform: rotate(50deg);
+    transform: rotate(50deg);
+}
+.smallship {
+    width:20vw;
 }
