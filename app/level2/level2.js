@@ -7,6 +7,7 @@ level2.data;
 level2.updateElement = function(){
     console.log('scroll')
     levels.moveRocket(document.getElementById("rocket"));
+    levels.moveEarth(document.getElementById("saturn"));
 };
 
 
@@ -25,6 +26,22 @@ level2.request = function() {
 
 level2.parseAjax = function (xhr,id) {
     level2.data = JSON.parse(xhr.responseText);
+
+    //var level1SaturnHtml='<div id="saturnSpace"><i class="'+level2.data.objectgroups.objects.saturn.objects[0].idclass+' '+level2.data.objectgroups.objects.saturn.objects[0].colorclass+'"></i></div>';
+
+    var level1SaturnHtml='<div id="'+level2.data.objectgroups.objects.saturn.objects[0].type+'" class="'+level2.data.objectgroups.objects.saturn.objects[0].idclass+' '+level2.data.objectgroups.objects.saturn.objects[0].sizeclass+' '+level2.data.objectgroups.objects.saturn.objects[0].colorclass+'">';
+    level1SaturnHtml+='<object type="image/svg+xml" data="lib/space-icons/'+level2.data.objectgroups.objects.saturn.objects[0].idclass+'.svg" >'+level2.data.objectgroups.objects.saturn.objects[0].type+'</object>';
+    level1SaturnHtml+='</div>';
+
+    document.getElementById('saturnObject').innerHTML=level1SaturnHtml;
+
+    var level1StarsHtml = '<div id="stars">';
+    for(i=0;i<level2.data.objectgroups.stars.objects.length;i++){
+        level1StarsHtml+='<i class="'+level2.data.objectgroups.stars.objects[i].idclass+' '+level2.data.objectgroups.stars.objects[i].colorclass+'"></i>';
+    }
+    level1StarsHtml += '</div>';
+    document.getElementById('mid').innerHTML=level1StarsHtml;
+    levels.spreadObjects(document.getElementById("stars").getElementsByTagName("i"),150,100,1,1,"fixed","%");
 
     var rocketObjectStart = '<div id="rocket"><span>';
     for (var key in level2.data.objectgroups.objects.rocket.objects){

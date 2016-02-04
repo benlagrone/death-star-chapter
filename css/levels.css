@@ -34,6 +34,7 @@
     -moz-transition: all 0.1s ease;
     -o-transition: all 0.1s ease;
     -ms-transition: all 0.1s ease;
+    z-index: 99;
 }
 #rocket > span > i:first-child{
     position: fixed;
@@ -88,6 +89,21 @@
 
 }
 
+#saturn{
+    float:left;
+    font-size: 1000vw;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    bottom: 0px;
+}
+#saturn object{
+    position: relative;
+    float: left;
+    bottom: 423px;
+    right: 350%;
+}
+
 .falcon {
     -ms-transform: rotate(50deg);
     -webkit-transform: rotate(50deg);
@@ -95,4 +111,6 @@
 }
 .smallship {
     width:20vw;
+    z-index:99;
 }
+.death_star,.saturn{position:absolute;}
