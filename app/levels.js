@@ -72,30 +72,39 @@ levels.click.setElementLeftPosition = function(element,increment){
 
 levels.click.setElementBottomPosition = function(element,increment){
     if(isNaN(parseInt(element.style.bottom.split("p")[0]))){
+        //console.log(((element.getBoundingClientRect())))
         return ((element.getBoundingClientRect().bottom)+increment)+"px"
     } else {
-        return ((Math.abs(parseInt(element.style.bottom.split("p")[0]))) + increment)+"px";
+        //console.log(((Math.abs(parseInt(element.style.bottom.split("p")[0]))) + increment)+"px")
+        return ((Math.abs(parseInt(element.style.bottom.split("p")[0]))))+"px";
     }
 };
 
 levels.moveRocket = function(rocket){
-    console.log(rocket)
     rocket.getElementsByTagName("span")[0].style.bottom = 65 * (document.getElementById("rocket").getBoundingClientRect().bottom)/(window.innerHeight*(document.getElementsByClassName("row").length)) + '%';
 };
 
-levels.moveEarth = function(earth){
-    earth.style.fontSize=(((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight) *100)+"vw";
-    earth.style.left=(((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight) + document.getElementsByClassName("row").length*2)+"px";
-    earth.style.height = (window.innerHeight*(document.getElementsByClassName("row").length)-window.pageYOffset)/window.innerHeight+.5 + '%';
-    earth.getElementsByTagName("i"||"object")[0].style.transform = "rotate(" + (15 + (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*4) + "deg)";
-    earth.getElementsByTagName("i"||"object")[0].style.right = (window.pageYOffset/window.innerHeight*45) + '%';
-    earth.getElementsByTagName("i"||"object")[0].style.bottom = (window.pageYOffset/window.innerHeight*200) + '%';
-    earth.getElementsByTagName("i"||"object")[0].style.opacity = 1.3-(window.pageYOffset/(window.innerHeight*(document.getElementsByClassName("row").length)));
+levels.moveEarth = function(orb){
+    //orb.style.fontSize=(((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight) *100)+"vw";
+    //orb.style.left=(((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight) + document.getElementsByClassName("row").length*2)+"px";
+    //orb.style.height = (window.innerHeight*(document.getElementsByClassName("row").length)-window.pageYOffset)/window.innerHeight+.5 + '%';
 };
+levels.moveSaturn = function(orb){
+    //orb.style.fontSize=(((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight) *100)+"vw";
+    //orb.style.left=(((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight) + document.getElementsByClassName("row").length*2)+"px";
+    //orb.style.height = (window.innerHeight*(document.getElementsByClassName("row").length)-window.pageYOffset)/window.innerHeight+.5 + '%';
+};
+
+levels.moveEarthChild = function(child){
+    child.style.transform = "rotate(" + (15 + (((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight))*4) + "deg)";
+    child.style.right = (window.pageYOffset/window.innerHeight*45) + '%';
+    child.style.bottom = (window.pageYOffset/window.innerHeight*200) + '%';
+    child.style.opacity = 1.3-(window.pageYOffset/(window.innerHeight*(document.getElementsByClassName("row").length)));
+}
 
 levels.showMessage = {};
 levels.showMessage.show = function(messageObject){
-    console.log(messageObject)
+    //console.log(messageObject)
     document.getElementById('rocket').getElementsByClassName('fa-comment')[0].style.display = "inline";
     document.getElementById('rocket').getElementsByClassName('fa-comment')[0].innerHTML='<span>'+messageObject.text+'</span>';
     setTimeout(function(){

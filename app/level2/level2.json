@@ -2,9 +2,12 @@
   "objectgroups": {
     "messages":{
       "objects":[
-        {"text":"3,2,1...   SCROLL!","position":100,"time":3000},
-        {"text":"Keep Scrolling...","position":50,"time":3000},
-        {"text":"finished!! Awesome!","position":5,"time":6000}
+        {"text":"Many Bothams died to get these plans!","position":100,"time":4000},
+        {"text":"Be Carefull, there's some fighting ahead!","position":75,"time":5000},
+        {"text":"That's No Moon!","position":30,"time":6000},
+        {"text":"Almost there!","position":20,"time":6000},
+        {"text":"Almost there!","position":10,"time":6000},
+        {"text":"It's as easy as shooting Womp Rats in Beggars canyon","position":2,"time":6000}
       ]
     },
     "stars": {
@@ -159,12 +162,47 @@
           {"type":"death_star","idclass":"death_star","sizeclass":"","colorclass":"silver"}
         ]
       },
-      "starships":{
+      "starships1":{
         "objects":[
           {"type":"rocket2","idclass":"rocket","sizeclass":"smallship","colorclass":"silver"},
           {"type":"falcon","idclass":"falcon","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"x-wing","idclass":"x-wing","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"satellite1","idclass":"satellite","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"satellite2","idclass":"satellite","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"satellite3","idclass":"satellite","sizeclass":"smallship","colorclass":"silver"},
           {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
-          {"type":"x-wing","idclass":"x-wing","sizeclass":"smallship","colorclass":"silver"}
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"}
+        ]
+      },
+      "starships2":{
+        "objects":[
+          {"type":"rocket2","idclass":"rocket","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"x-wing","idclass":"x-wing","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"satellite1","idclass":"satellite","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"satellite2","idclass":"satellite","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"satellite3","idclass":"satellite","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"}
+        ]
+      },
+      "starships3":{
+        "objects":[
+          {"type":"rocket2","idclass":"rocket","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"x-wing","idclass":"x-wing","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"satellite1","idclass":"satellite","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"satellite2","idclass":"satellite","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"satellite3","idclass":"satellite","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"}
         ]
       },
       "saturn":{
@@ -186,7 +224,8 @@
         "objects":[
           {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
           {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"}
+          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
+          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"}
         ]
       },
       "mid":{

@@ -24,6 +24,7 @@ level1.updateElement = function() {
         theObject.style.left = levels.click.setElementLeftPosition(theObject,increment);
     });
     levels.moveEarth(document.getElementById("earth"));
+    levels.moveEarthChild(document.getElementById("earth").getElementsByTagName("i")[0]);
     levels.moveRocket(document.getElementById("rocket"));
     for (var i =0; i < document.getElementById("stars").getElementsByTagName("i").length; i++){
         document.getElementById("stars").getElementsByTagName("i")[i].style.opacity = (1-(window.pageYOffset/(window.innerHeight*(document.getElementsByClassName("row").length))) -.3);
@@ -32,7 +33,7 @@ level1.updateElement = function() {
 
 
 
-/*level1.moveEarth = function(earth){
+level1.moveEarth = function(earth){
     earth.style.fontSize=(((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight) *100)+"vw";
     earth.style.left=(((window.innerHeight*(document.getElementsByClassName("row").length) - document.getElementById("rocket").getBoundingClientRect().bottom)/window.innerHeight) + document.getElementsByClassName("row").length*2)+"px";
     earth.style.height = (window.innerHeight*(document.getElementsByClassName("row").length)-window.pageYOffset)/window.innerHeight+.5 + '%';
@@ -41,7 +42,7 @@ level1.updateElement = function() {
     earth.getElementsByTagName("i")[0].style.bottom = (window.pageYOffset/window.innerHeight*200) + '%';
     earth.getElementsByTagName("i")[0].style.opacity = 1.3-(window.pageYOffset/(window.innerHeight*(document.getElementsByClassName("row").length)));
 };
-*/
+
 level1.cloudCall = function(clouds){
     for (var k=0;k<clouds.classList.length;k++){
         switch (clouds.classList[k]){
