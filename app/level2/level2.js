@@ -1,23 +1,15 @@
 var level2={};
-//console.log(id);
-
 level2.data;
 
-
 level2.updateElement = function(){
-    //console.log('scroll')
     levels.moveRocket(document.getElementById("rocket"));
-    //console.log(document.getElementById("saturn").getElementsByTagName("object")[0])
-    levels.moveSaturn(document.getElementById("saturn"));
-    //document.getElementById('falcon').style.left = levels.click.setElementLeftPosition(document.getElementById('falcon'),1);
+    levels.moveSaturn(document.getElementById("saturn").getElementsByTagName('object')[0]);
     document.getElementById('objects1').style.bottom = levels.click.setElementBottomPosition(document.getElementById('objects1'),1);
     document.getElementById('objects2').style.bottom = levels.click.setElementBottomPosition(document.getElementById('objects2'),1)
     level2.getMovingElements(function (theObject,increment){
         theObject.style.position = "relative";
         theObject.style.left = levels.click.setElementLeftPosition(theObject,increment);
-        //theObject.style.bottom = levels.click.setElementBottomPosition(theObject,increment);
     });
-
     var ScrollPosition = Math.round(100*window.pageYOffset/(document.body.scrollHeight-document.documentElement.clientHeight));
     for(i=0;i<level2.data.objectgroups.messages.objects.length;i++){
         var messageObject = level2.data.objectgroups.messages.objects[i];
@@ -28,17 +20,10 @@ level2.updateElement = function(){
 };
 
 level2.getMovingElements = function(callback){
-    //console.log(document.getElementsByClassName("row"))
     for(var h = 0;h<document.getElementsByClassName("row").length;h++){
         if((window.pageYOffset + (window.innerHeight))>document.getElementsByClassName("row")[h].offsetTop && (window.pageYOffset)<(document.getElementsByClassName("row")[h].offsetTop+(window.innerHeight/2*3))){
-    //for(var i = 0;i<document.getElementsByClassName("smallship").length;i++){}
         if(document.getElementsByClassName("row")[h].getElementsByClassName("smallship").length>0){
-            //console.log(document.getElementsByClassName("row")[h].getElementsByClassName("smallship"))
             for(j=0;j<document.getElementsByClassName("row")[h].getElementsByClassName("smallship").length;j++){
-                console.log(document.getElementsByClassName("row")[h].getElementsByClassName("smallship")[j])
-                console.log(document.getElementsByClassName("row")[h].getElementsByClassName("smallship")[j].getAttribute('id'))
-                //console.log(document.getElementsByClassName("smallship")[j].getAttribute('id'))
-                //console.log(document.getElementsByClassName("row")[h].getElementsByClassName("smallship")[j])
                 switch(document.getElementsByClassName("row")[h].getElementsByClassName("smallship")[j].getAttribute('id')) {
                     case 'rocket2':
                         callback(document.getElementsByClassName("row")[h].getElementsByClassName("smallship")[j], -4);
@@ -63,18 +48,22 @@ level2.getMovingElements = function(callback){
                         break;
                     default:
                         ;
-
+                    }
                 }
-            }}
+            }else if(document.getElementsByClassName("row")[h].getElementsByClassName("deathStarAdd").length>0&&(document.getElementById("rocket").getBoundingClientRect().bottom)/(window.innerHeight*(document.getElementsByClassName("row").length))>=.995){
+            //console.log(document.getElementsByClassName("row")[h].getElementsByClassName("deathStarAdd"))
+            //console.log(document.getElementsByClassName("row")[h].offsetTop)
+            //console.log(window.innerHeight)
+            //console.log(document.getElementById("rocket").getBoundingClientRect().bottom)
+            //console.log(window.innerHeight*(document.getElementsByClassName("row").length))
+            //console.log((window.innerHeight*(document.getElementsByClassName("row").length))/(document.getElementById("rocket").getBoundingClientRect().bottom))
+            //console.log((document.getElementById("rocket").getBoundingClientRect().bottom)/(window.innerHeight*(document.getElementsByClassName("row").length)))
+            //console.log((document.getElementById("rocket").getBoundingClientRect().bottom)/(window.innerHeight*(document.getElementsByClassName("row").length))>=.99)
+            console.log('explode')
+        }
         }
     }
-}
-
-level2.moveRocket = function(rocket){
-    rocket.getElementsByTagName("span")[0].style.bottom = 65 * (document.getElementById("rocket").getBoundingClientRect().bottom)/(window.innerHeight*(document.getElementsByClassName("row").length)) + '%';
 };
-
-
 
 level2.request = function() {
     var url = 'app/level2/level2.json';
@@ -136,9 +125,14 @@ level2.parseAjax = function (xhr,id) {
     levels.spreadObjects(document.getElementById("objects3").getElementsByClassName("smallship"),150,150,1,1,"relative","%");
 
     var deathStarObject = '';
-    deathStarObject+='<div id="'+level2.data.objectgroups.objects.death_star.objects[0].type+'" class="'+level2.data.objectgroups.objects.death_star.objects[0].idclass+' '+level2.data.objectgroups.objects.death_star.objects[0].sizeclass+' '+level2.data.objectgroups.objects.death_star.objects[0].colorclass+'">';
-    deathStarObject+='<object type="image/svg+xml" data="lib/space-icons/'+level2.data.objectgroups.objects.death_star.objects[0].idclass+'.svg" >'+level2.data.objectgroups.objects.death_star.objects[0].type+'</object>';
-    deathStarObject+='</div>';
+    for (var key in level2.data.objectgroups.objects.death_star.objects) {
+        deathStarObject += '<div id="' + level2.data.objectgroups.objects.death_star.objects[key].type + '" class="' + level2.data.objectgroups.objects.death_star.objects[key].idclass + ' ' + level2.data.objectgroups.objects.death_star.objects[key].sizeclass + ' ' + level2.data.objectgroups.objects.death_star.objects[key].colorclass + '">';
+        if(level2.data.objectgroups.objects.death_star.objects[key].type!='cloud'){
+            deathStarObject += '<object type="image/svg+xml" data="lib/space-icons/' + level2.data.objectgroups.objects.death_star.objects[key].idclass + '.svg" >' + level2.data.objectgroups.objects.death_star.objects[key].type + '</object>';
+        }
+
+        deathStarObject += '</div>';
+    }
     document.getElementById('deathstarObject').innerHTML=deathStarObject;
 
 };

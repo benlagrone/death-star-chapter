@@ -5,9 +5,10 @@
         {"text":"Many Bothams died to get these plans!","position":100,"time":4000},
         {"text":"Be Carefull, there's some fighting ahead!","position":75,"time":5000},
         {"text":"That's No Moon!","position":30,"time":6000},
+        {"text":"It's a trap!","position":25,"time":6000},
         {"text":"Almost there!","position":20,"time":6000},
         {"text":"Almost there!","position":10,"time":6000},
-        {"text":"It's as easy as shooting Womp Rats in Beggars canyon","position":2,"time":6000}
+        {"text":"It's as easy as shooting Womp Rats in Beggars canyon","position":1,"time":6000}
       ]
     },
     "stars": {
@@ -159,7 +160,10 @@
     "objects":{
       "death_star":{
         "objects":[
-          {"type":"death_star","idclass":"death_star","sizeclass":"","colorclass":"silver"}
+          {"type":"death_star","idclass":"death_star","sizeclass":"","colorclass":"silver"},
+          {"type":"cloud","idclass":"fa fa-bullseye","sizeclass":"deathStarAdd fa-5x","colorclass":"red"},
+          {"type":"cloud","idclass":"fa fa-sun-o","sizeclass":"deathStarAdd fa-5x","colorclass":"yellow"},
+          {"type":"cloud","idclass":"fa fa-crosshairs","sizeclass":"deathStarAdd fa-5x","colorclass":"yellow"}
         ]
       },
       "starships1":{
@@ -216,30 +220,6 @@
           {"type":"rocket","idclass":"fa fa-rocket","sizeclass":"fa-5x","colorclass":"silver"},
           {"type":"rocket","idclass":"fa fa-fire","sizeclass":"","colorclass":"yellow"},
           {"type":"rocket","idclass":"fa fa-comment","sizeclass":"fa-5x","colorclass":"white"}
-        ]
-      }
-    },
-    "clouds": {
-      "boss":{
-        "objects":[
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
-          {"type":"tie-fighter","idclass":"tie-fighter","sizeclass":"smallship","colorclass":"silver"}
-        ]
-      },
-      "mid":{
-        "objects":[
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"}
-        ]
-      },
-      "first":{
-        "objects":[
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"},
-          {"type":"satellite","idclass":"satellite","sizeclass":"","colorclass":"silver"}
         ]
       }
     }
