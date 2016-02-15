@@ -137,10 +137,6 @@ level2.parseAjax = function (xhr,id) {
 
 };
 
-level2.click={};
-level2.click.left = levels.click.left;
-level2.click.right = levels.click.right;
-
 
 if(id==='home'){
 

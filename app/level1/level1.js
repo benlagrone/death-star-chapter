@@ -14,7 +14,6 @@ level1.updateElement = function() {
                 levels.showMessage.show(level1.data.objectgroups.messages.objects[i])
             }
     }
-
     if(document.body.scrollHeight-window.pageYOffset===document.documentElement.clientHeight)
         document.getElementById('curtain').className = 'fade';
 
@@ -138,13 +137,7 @@ level1.parseAjax = function (xhr,id){
     levels.spreadObjects(document.getElementById("ground").getElementsByClassName("fa-tree"),0,14,-(window.innerHeight/28),1,"relative","px");
     levels.spreadObjects(document.getElementById("ground").getElementsByClassName("right")[0].getElementsByClassName("small"),0,14,-(window.innerHeight/13),1,"relative","px");
     levels.spreadObjects(document.getElementById("ground").getElementsByClassName("right")[0].getElementsByClassName("large"),0,14,-(window.innerHeight/15),1,"relative","px");
-
 };
-
-level1.click={};
-level1.click.left = levels.click.left;
-level1.click.right = levels.click.right;
-
 
 if(id==='home'){
 

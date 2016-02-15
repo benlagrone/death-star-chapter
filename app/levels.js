@@ -62,6 +62,7 @@ levels.click.intervalMove = function(action,direction) {
 
 };
 
+levels.move = {};
 levels.click.setElementLeftPosition = function(element,increment){
     if(isNaN(parseInt(element.style.left.split("p")[0]))){
         return ((element.getBoundingClientRect().left)+increment)+"px"
