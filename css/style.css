@@ -18,7 +18,7 @@ footer{
 .color-4 { background-color: #0665A2 }
 .wet-asphalt{background-color:#34495e}
 .white{color:white;}
-
+.scroll{height:200px;overflow:hidden;}
 #curtain{
     position:fixed;
     left:0;

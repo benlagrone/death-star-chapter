@@ -1,0 +1,32 @@
+
+#mid #stars > i {
+    z-index:-99;
+}
+
+#saturn{
+
+}
+#saturn object{
+    z-index:-9;
+    width: 120%;
+    position: fixed;
+    left: -76%;
+    bottom: 40%;
+    transform: rotate(319deg);
+
+}
+#boss .row > div, #mid .row > div, #first .row > div{height:100%}
+
+.falcon {
+    -ms-transform: rotate(50deg);
+    -webkit-transform: rotate(50deg);
+    transform: rotate(50deg);
+}
+.smallship {
+    width:20vw;
+    z-index:99;
+    float:left;
+}
+.death_star,.saturn{position:absolute;right: 0%;}
+.fa-crosshairs{position:absolute;right: 324px;  top: 212px;}
+#rocketobject #rocket > span{z-index:999}

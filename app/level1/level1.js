@@ -77,11 +77,6 @@ level1.getMovingElements = function(callback){
     }
 };
 
-level1.request = function() {
-    var url = 'app/level1/level1.json';
-    services.getPage(url,'level1',level1.parseAjax,id);
-};
-
 
 level1.parseAjax = function (xhr,id){
     level1.data = JSON.parse(xhr.responseText);
@@ -144,5 +139,6 @@ if(id==='home'){
 }else{
 
     level1.request();
-    levels.load('level1.updateElement()');
+    levels.load('level1');
+    services.getPage(pageRoute.data,'level1',level1.parseAjax,id);
 }

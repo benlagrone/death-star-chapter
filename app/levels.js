@@ -62,7 +62,7 @@ levels.click.intervalMove = function(action,direction) {
 
 };
 
-levels.move = {};
+
 levels.click.setElementLeftPosition = function(element,increment){
     if(isNaN(parseInt(element.style.left.split("p")[0]))){
         return ((element.getBoundingClientRect().left)+increment)+"px"
@@ -80,7 +80,7 @@ levels.click.setElementBottomPosition = function(element,increment){
         return ((Math.abs(parseInt(element.style.bottom.split("p")[0]))))+"px";
     }
 };
-
+levels.move = {};
 levels.moveRocket = function(rocket){
     rocket.getElementsByTagName("span")[0].style.bottom = 65 * (document.getElementById("rocket").getBoundingClientRect().bottom)/(window.innerHeight*(document.getElementsByClassName("row").length)) + '%';
 };
@@ -117,8 +117,13 @@ levels.load = function(levelCallback){
         document.getElementsByClassName("row")[i].style.height = window.innerHeight + "px";
     }
     smoothScrollTo(document.body.scrollHeight);
-    document.getElementsByTagName("body")[0].setAttribute("onscroll",levelCallback);
+    document.getElementsByTagName("body")[0].setAttribute("onscroll",levelCallback+'.updateElement()');
     document.getElementById('curtain').className = 'fade';
+    //if (pageRoute.data){
+        //window.callbackPath = levelCallback+'.parseAjax';
+        //console.log(callbackPath);
+        //services.getPage(pageRoute.data,levelCallback,levelCallback+'.parseAjax',levelCallback);
+    //}
 };
 
 document.onkeydown = levels.click.checkKey;

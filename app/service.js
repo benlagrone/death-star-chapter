@@ -1,10 +1,12 @@
 var services = {};
 services.getPage = function(url,id,callBack,hash){
+    //console.log(callBack)
     var xhttp;
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            callBack(xhttp,id,hash);
+            //window.callback = callBack;
+            callBack(xhttp,id,hash)
         }
     };
     xhttp.open('GET', url, true);
@@ -35,7 +37,6 @@ services.routing.useArray = function(hash){
     }
     services.getPage(pageRoute.page,'content',services.routing.writeHTML,hash);
     services.getPage(pageRoute.script,'head',services.routing.writeScript,'hash');
-
 };
 services.routing.writeHTML = function(xhr,id){
     if(document.getElementById(id)!=null)

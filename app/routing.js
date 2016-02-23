@@ -14,7 +14,8 @@ services.routing.register('level1',function(){
     pageRoute = {
         page:"./app/level1/level1.html",
         partial:"./app/level1/home-level1.html",
-        script:"./app/level1/level1.js"
+        script:"./app/level1/level1.js",
+        data:"./app/level1/level1.json"
     };
     //console.log('level1')
 });
@@ -30,7 +31,8 @@ services.routing.register('leaderboard',function(){
     pageRoute = {
         page:"./app/leaderboard/leaderboard.html",
         partial:"./app/leaderboard/home-leaderboard.html",
-        script:"./app/leaderboard/leaderboard.js"
+        script:"./app/leaderboard/leaderboard.js",
+        data:"./app/leaderboard/leaderboard.json"
     };
     //console.log('leaderboard')
 });
@@ -39,7 +41,8 @@ services.routing.register('credits',function(){
     pageRoute = {
         page:"./app/credits/credits.html",
         partial:"./app/credits/home-credits.html",
-        script:"./app/credits/credits.js"
+        script:"./app/credits/credits.js",
+        data:"./app/credits/credits.json"
     };
     //console.log('level1')
 });
