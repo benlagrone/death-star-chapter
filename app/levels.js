@@ -111,19 +111,13 @@ levels.showMessage.show = function(messageObject){
     }, messageObject.time);
 };
 
-levels.load = function(levelCallback){
-    //console.log(levelCallback)
+levels.load = function(level){
     for (i = 0;i<document.getElementsByClassName("row").length;i++){
         document.getElementsByClassName("row")[i].style.height = window.innerHeight + "px";
     }
     smoothScrollTo(document.body.scrollHeight);
-    document.getElementsByTagName("body")[0].setAttribute("onscroll",levelCallback+'.updateElement()');
+    document.getElementsByTagName("body")[0].setAttribute("onscroll",level+'.updateElement()');
     document.getElementById('curtain').className = 'fade';
-    //if (pageRoute.data){
-        //window.callbackPath = levelCallback+'.parseAjax';
-        //console.log(callbackPath);
-        //services.getPage(pageRoute.data,levelCallback,levelCallback+'.parseAjax',levelCallback);
-    //}
 };
 
 document.onkeydown = levels.click.checkKey;

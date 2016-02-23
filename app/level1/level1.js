@@ -81,15 +81,14 @@ level1.getMovingElements = function(callback){
 level1.parseAjax = function (xhr,id){
     level1.data = JSON.parse(xhr.responseText);
 
-    var level1MoonHTML = '<i class="'+level1.data.objectgroups.moon.objects[0].idclass+' '+level1.data.objectgroups.moon.objects[0].sizeclass+' '+level1.data.objectgroups.moon.objects[0].colorclass+'"></i>';
-    document.getElementById('p0').innerHTML=level1MoonHTML;
+    document.getElementById('p0').innerHTML = '<i class="'+level1.data.objectgroups.moon.objects[0].idclass+' '+level1.data.objectgroups.moon.objects[0].sizeclass+' '+level1.data.objectgroups.moon.objects[0].colorclass+'"></i>';
 
-    var level1StarsHtml = '<div id="stars">';
+    var level1StarsHTML = '<div id="stars">';
     for(i=0;i<level1.data.objectgroups.stars.objects.length;i++){
-        level1StarsHtml+='<i class="'+level1.data.objectgroups.stars.objects[i].idclass+' '+level1.data.objectgroups.stars.objects[i].colorclass+'"></i>';
+        level1StarsHTML+='<i class="'+level1.data.objectgroups.stars.objects[i].idclass+' '+level1.data.objectgroups.stars.objects[i].colorclass+'"></i>';
     }
-    level1StarsHtml += '</div>';
-    document.getElementById('p1').innerHTML=level1StarsHtml;
+    level1StarsHTML += '</div>';
+    document.getElementById('p1').innerHTML=level1StarsHTML;
     levels.spreadObjects(document.getElementById("stars").getElementsByTagName("i"),150,100,1,1,"fixed","%");
 
     for (var key in level1.data.objectgroups.clouds){
@@ -137,8 +136,6 @@ level1.parseAjax = function (xhr,id){
 if(id==='home'){
 
 }else{
-
-    level1.request();
     levels.load('level1');
     services.getPage(pageRoute.data,'level1',level1.parseAjax,id);
 }
